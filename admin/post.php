@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config.php';
 $query = $pdo->prepare('SELECT * FROM blogs_posts ORDER BY id');
 $query->execute();
 
@@ -22,21 +22,25 @@ $blogposts = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
       <div class="row">
+        <h2>Posts</h2>
         <div class="col-md-8">
-          <?php
-          foreach ($blogposts as $blogp) {
-            echo '<div class="blog-post">';
-            echo '<h2>'.$blogp['titulo'].'</h2>';
-            echo '<p>Sep 1, 2017 By <a href="">carlos</a> </p>';
-            echo '<div class="blog-post-image">';
-            echo '<img src="img/sierra.jpg" alt="">';
-            echo '</div>';
-            echo '<div class="blog-post-content">';
-            echo ''.$blogp['contenido'].'';
-            echo '</div>';
-            echo '</div>';
-          }
-           ?>
+          <a class="btn btn-primary" href="insertar-post.php">New Post</a>
+          <table class="table">
+            <tr>
+              <th>Title</th>
+              <th>edit</th>
+              <th>delete</th>
+            </tr>
+            <?php
+            foreach ($blogposts as $blogpost){
+              echo '<tr>';
+              echo '<td>'.$blogpost['titulo'].'</td>';
+              echo '<td>Edit</td>';
+              echo '<td>Del</td>';
+              echo '<tr>';
+            }
+             ?>
+          </table>
         </div>
         <div class="col-md-4">
           sidebar
