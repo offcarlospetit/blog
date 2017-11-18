@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config.php';
 $query = $pdo->prepare('SELECT * FROM blogs_posts ORDER BY id');
 $query->execute();
 
@@ -12,7 +12,7 @@ $blogposts = $query->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
-    <title>Blog</title>
+    <title>New Post</title>
   </head>
   <body>
     <div class="container">
@@ -22,21 +22,16 @@ $blogposts = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
       <div class="row">
+        <h2>Posts</h2>
+        <a class="btn btn-default" href="post.php">Post</a>
         <div class="col-md-8">
-          <?php
-          foreach ($blogposts as $blogp) {
-            echo '<div class="blog-post">';
-            echo '<h2>'.$blogp['titulo'].'</h2>';
-            echo '<p>Sep 1, 2017 By <a href="">carlos</a> </p>';
-            echo '<div class="blog-post-image">';
-            echo '<img src="img/sierra.jpg" alt="">';
-            echo '</div>';
-            echo '<div class="blog-post-content">';
-            echo ''.$blogp['contenido'].'';
-            echo '</div>';
-            echo '</div>';
-          }
-           ?>
+          <table class="table">
+            <tr>
+              <th>Title</th>
+              <th>edit</th>
+              <th>delete</th>
+            </tr>
+          </table>
         </div>
         <div class="col-md-4">
           sidebar

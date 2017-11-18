@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once '../config.php';
 $query = $pdo->prepare('SELECT * FROM blogs_posts ORDER BY id');
 $query->execute();
 
@@ -23,20 +23,11 @@ $blogposts = $query->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="row">
         <div class="col-md-8">
-          <?php
-          foreach ($blogposts as $blogp) {
-            echo '<div class="blog-post">';
-            echo '<h2>'.$blogp['titulo'].'</h2>';
-            echo '<p>Sep 1, 2017 By <a href="">carlos</a> </p>';
-            echo '<div class="blog-post-image">';
-            echo '<img src="img/sierra.jpg" alt="">';
-            echo '</div>';
-            echo '<div class="blog-post-content">';
-            echo ''.$blogp['contenido'].'';
-            echo '</div>';
-            echo '</div>';
-          }
-           ?>
+          <ul>
+            <li>
+              <a href="post.php">Manage BlogPost</a>
+            </li>
+          </ul>
         </div>
         <div class="col-md-4">
           sidebar
